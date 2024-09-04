@@ -1,7 +1,7 @@
 import Amplitude
 import ReluxAnalytics
 
-extension Analytics {
+public extension Analytics {
     actor AmplitudeAggregator: Analytics.IAnalyticsAggregator {
         
         private let licenseKeyProvider: Analytics.LicenseKeyProviding
@@ -12,11 +12,11 @@ extension Analytics {
             case emptyLicenseKey
         }
         
-        init(licenseKeyProvider: Analytics.LicenseKeyProviding) {
+        public init(licenseKeyProvider: Analytics.LicenseKeyProviding) {
             self.licenseKeyProvider = licenseKeyProvider
         }
         
-        func setup(userId: String) async throws {
+        public func setup(userId: String) async throws {
             amplitudeSDK = .init()
             guard let amplitudeSDK else {
                 throw AmplitudeAggregator.sdkNotInitialized
@@ -26,18 +26,17 @@ extension Analytics {
                 throw AmplitudeAggregator.emptyLicenseKey
             }
             amplitudeSDK.initializeApiKey(licenseKey)
-            amplitudeSDK.defaultTracking.appLifecycles = true
             try await identifyClient(by: userId)
         }
         
-        func setUserProperties(_ userProperties: Analytics.Data) async throws {
+        public func setUserProperties(_ userProperties: Analytics.Data) async throws {
             guard let amplitudeSDK else {
                 throw AmplitudeAggregator.sdkNotInitialized
             }
             amplitudeSDK.setUserProperties(userProperties)
         }
         
-        func track(_ event: Analytics.Event, _ data: Analytics.Data?) async throws {
+        public func track(_ event: Analytics.Event, _ data: Analytics.Data?) async throws {
             guard let amplitudeSDK else {
                 throw AmplitudeAggregator.sdkNotInitialized
             }
