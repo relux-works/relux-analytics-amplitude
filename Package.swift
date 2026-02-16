@@ -13,15 +13,15 @@ let package = Package(
             targets: ["ReluxAnalyticsAmplitude"]),
     ],
     dependencies: [
-        .package(url: "git@github.com:relux-works/relux-analytics.git", from: "1.0.0"),
-        .package(url: "git@github.com:relux-works/dawrin-amplitude.git", from: "8.14.010"),
+        .package(url: "https://github.com/relux-works/relux-analytics.git", from: "3.0.0"),
+        .package(url: "https://github.com/relux-works/swift-amplitude.git", from: "9.0.0"),
     ],
     targets: [
         .target(
             name: "ReluxAnalyticsAmplitude",
             dependencies: [
                 .product(name: "ReluxAnalytics", package: "relux-analytics"),
-                .product(name: "Amplitude", package: "dawrin-amplitude")
+                .product(name: "Amplitude", package: "swift-amplitude")
             ]
         )
     ]
