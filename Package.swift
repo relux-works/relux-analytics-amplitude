@@ -13,8 +13,8 @@ let package = Package(
             targets: ["ReluxAnalyticsAmplitude"]),
     ],
     dependencies: [
-        .package(url: "git@github.com:ivalx1s/relux-analytics.git", from: "1.0.0"),
-        .package(url: "git@github.com:ivalx1s/dawrin-amplitude.git", from: "8.14.010"),
+        .package(url: "git@github.com:relux-works/relux-analytics.git", from: "1.0.0"),
+        .package(url: "git@github.com:relux-works/dawrin-amplitude.git", from: "8.14.010"),
     ],
     targets: [
         .target(
